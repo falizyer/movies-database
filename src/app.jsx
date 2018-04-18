@@ -34,3 +34,16 @@ ReactDOM.render(<ReactComponent/>, document.getElementById("app3"));
 // 4
 //pure render
 ReactDOM.render((<p>Hello World: pure html</p>), document.getElementById("app4"));
+
+// 5
+//ReactPureComponent
+class ReactPureComponent extends React.PureComponent {
+    render() {
+        return (
+            <div>
+                <p>Hello World: react pure component!</p>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<ReactPureComponent/>, document.getElementById("app5"));
