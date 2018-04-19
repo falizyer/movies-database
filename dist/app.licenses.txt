@@ -205,6 +205,10 @@ resolve-pathname@2.2.0
 MIT
 MIT
 
+react-router-dom@4.2.2
+MIT
+MIT
+
 object-assign@4.1.1
 MIT
 The MIT License (MIT)
@@ -262,10 +266,6 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 react-router@4.2.0
-MIT
-MIT
-
-react-router-dom@4.2.2
 MIT
 MIT
 
