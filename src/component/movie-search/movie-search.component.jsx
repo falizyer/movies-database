@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 
 import "./movie-search.style";
 
@@ -9,11 +10,15 @@ class MovieSearchComponent extends PureComponent {
 
     render() {
         return (
-            <div className={"movie-search-wrap"}>
+            <div className={"movie-search"}>
                 <p>Hello World: movie search!</p>
             </div>
         );
     }
 }
 
-export default MovieSearchComponent;
+function mapState(state, props) {
+    return {};
+}
+
+export default connect(mapState)(MovieSearchComponent);
