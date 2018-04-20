@@ -7,7 +7,7 @@ module.exports = {
     build: "./dist",
     node_modules: "./node_modules",
     entry: {
-        app: "./src/index.js"
+        app: "./src/index.jsx"
     },
     plugins: [
         new CleanWebpackPlugin([
