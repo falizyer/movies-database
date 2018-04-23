@@ -12,8 +12,11 @@ class MovieListComponent extends PureComponent {
     render() {
         const MovieList = this.props.movieList.map((movie, i) => {
             return <MovieListItem key={i}
+                                  id={movie.id}
                                   title={movie.title}
-                                  release-date={movie.release_date}/>;
+                                  poster_path={movie.poster_path}
+                                  release_date={movie.release_date}
+                                  genres={movie.genres}/>;
         });
         return (
             <div className={"movie-list"}>

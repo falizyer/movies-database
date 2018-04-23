@@ -1,4 +1,6 @@
 import React, {PureComponent} from "react";
+import {Link} from "react-router-dom";
+import {MovieDatabaseRepository} from "repository/movie-database.repository";
 
 import "./movie-list-item.style";
 
@@ -8,12 +10,12 @@ class MovieListItemComponent extends PureComponent {
     }
 
     render() {
-        const {title} = this.props;
-
+        const {title, poster_path, id} = this.props;
         return (
-            <div className={"movie-list-item"}>
-                {title}
-            </div>
+            <section className={"movie-list-item"}>
+                <h3><Link to={{pathname: MovieDatabaseRepository.constructMovieUrl(id)}}>{title}</Link></h3>
+                <img src={poster_path}/>
+            </section>
         );
     }
 }

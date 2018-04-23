@@ -39,6 +39,15 @@ class MovieDatabaseRepositoryClass extends Repository {
     }
 
     /**
+     * Method for constructing single movie url
+     * @param id the id of the movie
+     * @returns {string}
+     */
+    constructMovieUrl(id) {
+        return `${this.getUrl()}/movies/${id}`;
+    }
+
+    /**
      * Method for getting individual information about some movie
      * @param id the id of the movie
      * @returns {
@@ -61,7 +70,7 @@ class MovieDatabaseRepositoryClass extends Repository {
             method: RequestMethod.GET,
             headers: this.getHeaders()
         };
-        return Repository.request(`${this.getUrl()}/movies/${id}`, properties, ResponseType.JSON);
+        return Repository.request(this.constructMovieUrl(id), properties, ResponseType.JSON);
     }
 }
 
