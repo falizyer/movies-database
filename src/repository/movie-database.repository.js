@@ -41,7 +41,20 @@ class MovieDatabaseRepositoryClass extends Repository {
     /**
      * Method for getting individual information about some movie
      * @param id the id of the movie
-     * @returns {*}
+     * @returns {
+     *   id: number,
+     *   title: string,
+     *   tagline: string,
+     *   vote_average: number,
+     *   vote_count: number,
+     *   release_date: string,
+     *   poster_path: string,
+     *   overview: string,
+     *   budget: number,
+     *   revenue: number,
+     *   runtime: number,
+     *   genres: Array<string>
+     * }
      */
     getMovie(id) {
         const properties = {
