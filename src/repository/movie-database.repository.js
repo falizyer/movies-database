@@ -5,6 +5,31 @@ class MovieDatabaseRepositoryClass extends Repository {
         super(url, headers);
     }
 
+    /**
+     * @interface DataItem {
+     *  id: number,
+     *  title: string,
+     *  tagline: string,
+     *  vote_average: number,
+     *  vote_count: number,
+     *  release_date: string,
+     *  poster_path: string,
+     *  overview: string,
+     *  budget: number,
+     *  revenue: number,
+     *  runtime: number,
+     *  genres: Array<string>
+     * }
+     */
+    /**
+     * Method for getting full list of movies with some additional properties
+     * @returns {
+     * data: Array<DataItem>,
+     * total: number,
+     * offset: number,
+     * limit: number
+     * }
+     */
     getMovies() {
         const properties = {
             method: RequestMethod.GET,
@@ -13,6 +38,11 @@ class MovieDatabaseRepositoryClass extends Repository {
         return Repository.request(`${this.getUrl()}/movies`, properties, ResponseType.JSON);
     }
 
+    /**
+     * Method for getting individual information about some movie
+     * @param id the id of the movie
+     * @returns {*}
+     */
     getMovie(id) {
         const properties = {
             method: RequestMethod.GET,
