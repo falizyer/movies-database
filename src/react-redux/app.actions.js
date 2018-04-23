@@ -6,5 +6,8 @@ export const AppActions = {
     MOVIE_LIST: {
         IS_LOADING: Symbol("MOVIE_LIST.IS_LOADING"),
         IS_LOADED: Symbol("MOVIE_LIST.IS_LOADED")
+    },
+    MOVIE_SEARCH: {
+        BUTTON_PRESSED: Symbol("MOVIE_SEARCH.BUTTON_PRESSED")
     }
 };
