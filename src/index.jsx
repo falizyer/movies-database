@@ -28,5 +28,4 @@ MovieDatabaseRepository.getMovies()
                 movieTotal: total
             }
         });
-        console.log(movies);
     });
