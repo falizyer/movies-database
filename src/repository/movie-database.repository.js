@@ -30,21 +30,12 @@ class MovieDatabaseRepositoryClass extends Repository {
      * limit: number
      * }
      */
-    getMovies() {
+    async getMovies() {
         const properties = {
             method: RequestMethod.GET,
             headers: this.getHeaders()
         };
-        return Repository.request(`${this.getUrl()}/movies`, properties, ResponseType.JSON);
-    }
-
-    /**
-     * Method for constructing single movie url
-     * @param id the id of the movie
-     * @returns {string}
-     */
-    constructMovieUrl(id) {
-        return `${this.getUrl()}/movies/${id}`;
+        return await Repository.request(`${this.getUrl()}/movies`, properties, ResponseType.JSON);
     }
 
     /**
@@ -65,12 +56,12 @@ class MovieDatabaseRepositoryClass extends Repository {
      *   genres: Array<string>
      * }
      */
-    getMovie(id) {
+    async getMovie({id}) {
         const properties = {
             method: RequestMethod.GET,
             headers: this.getHeaders()
         };
-        return Repository.request(this.constructMovieUrl(id), properties, ResponseType.JSON);
+        return await Repository.request(`${this.getUrl()}/movies/${id}`, properties, ResponseType.JSON);
     }
 }
 

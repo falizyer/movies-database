@@ -8,17 +8,28 @@ class MovieInfoComponent extends PureComponent {
         super(props);
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
+        const {movieInfo: {title, poster_path, overview} = {}} = this.props;
         return (
-            <div className={"movie-info"}>
-                <p>Hello World: movie info!</p>
-            </div>
+            <section className={"movie-info"}>
+                <figure className={"movie-poster"}>
+                    <img src={poster_path} alt={title}/>
+                </figure>
+                <div className={"description-container"}>
+                    <h3 className={"title"}>{title}</h3>
+                    <div className={"additional-information"}>
+                        <div className={"genres"}></div>
+                        <div className={""}></div>
+                    </div>
+                    <p className={"overview"}>{overview}</p>
+                </div>
+            </section>
         );
     }
 }
 
-function mapState(state, props) {
-    return {};
-}
-
-export default connect(mapState)(MovieInfoComponent);
+export default MovieInfoComponent;

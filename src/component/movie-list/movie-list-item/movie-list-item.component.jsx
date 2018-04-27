@@ -1,8 +1,22 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
-import {MovieDatabaseRepository} from "repository/movie-database.repository";
 
 import "./movie-list-item.style";
+import {MovieDatabaseRepository} from "repository/movie-database.repository";
+import {AppActions} from "../../../react-redux/app.actions";
+import {AppStore} from "../../../react-redux/app.store";
+import {PAGES} from "../../../app.component";
+
+export function isPageChanged(data) {
+    // const {pathname, params} = data;
+    // AppStore.dispatch({
+    //     type: AppActions.APPLICATION.IS_PAGE_CHANGED,
+    //     payload: {
+    //         pathname,
+    //         params
+    //     }
+    // });
+}
 
 class MovieListItemComponent extends PureComponent {
     constructor(props) {
@@ -15,18 +29,16 @@ class MovieListItemComponent extends PureComponent {
             title,
             poster_path,
             release_date,
-            genres = []
+            genres
         } = this.props;
-        const genreList = genres.map(genre => (
-            <div className={"movie-genre"}>{genre}</div>
-        ));
+        const genreList = this.getGenreList(genres);
         return (
             <section className={"movie-list-item"}>
                 <img className={"movie-poster"} src={poster_path} alt={title}/>
                 <div className={"movie-description"}>
                     <div className={"movie-content-wrap"}>
                         <h3 className={"content-title"}>
-                            <Link to={{pathname: MovieDatabaseRepository.constructMovieUrl(id)}}>{title}</Link>
+                            <Link to={{pathname: `/movie/${id}`, state: {page: PAGES.MOVIE_INFO, movieId: id}}}>{title}</Link>
                         </h3>
                         <div className={"movie-genre-list"}>{genreList}</div>
                     </div>
@@ -36,6 +48,12 @@ class MovieListItemComponent extends PureComponent {
                 </div>
             </section>
         );
+    }
+
+    getGenreList(genres = []) {
+        return genres.map((genre, index) => (
+            <div key={index} className={"movie-genre"}>{genre}</div>
+        ));
     }
 }
 

@@ -9,18 +9,18 @@ export const RequestMethod = {
 };
 
 export class Repository {
-    static request(url, properties, type) {
+    static async request(url, properties, type) {
         const response = new Request(url, properties);
-        return this.fetchResponse(response, type);
+        return await this.fetchResponse(response, type);
     }
 
-    static fetchResponse(response, type) {
-        const fetched = fetch(response);
+    static async fetchResponse(response, type) {
+        const fetched = await fetch(response);
         switch (type) {
             case ResponseType.TEXT:
-                return fetched.then(datum => datum.text());
+                return fetched.text();
             case ResponseType.JSON:
-                return fetched.then(datum => datum.json());
+                return fetched.json();
             default:
                 throw new Error("unknown response type");
         }
