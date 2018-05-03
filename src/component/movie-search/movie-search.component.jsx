@@ -1,11 +1,11 @@
-import React, {PureComponent} from "react";
-import {connect} from "react-redux";
+import React from "react";
+import HandledComponent from "core/handled.component";
+
 import {AppActions} from "../../react-redux/app.actions";
 
 import "./movie-search.style";
 
-
-class MovieSearchComponent extends PureComponent {
+export default class MovieSearchComponent extends HandledComponent {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -45,11 +45,3 @@ class MovieSearchComponent extends PureComponent {
         );
     }
 }
-
-function mapState(state, props) {
-    return {
-        search_request: state.search_request
-    };
-}
-
-export default connect(mapState)(MovieSearchComponent);

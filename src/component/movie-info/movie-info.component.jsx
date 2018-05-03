@@ -1,9 +1,9 @@
-import React, {PureComponent} from "react";
-import {connect} from "react-redux";
+import React from "react";
+import HandledComponent from "core/handled.component";
 
 import "./movie-info.style";
 
-class MovieInfoComponent extends PureComponent {
+class MovieInfoComponent extends HandledComponent {
     constructor(props) {
         super(props);
     }

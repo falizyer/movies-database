@@ -16,6 +16,11 @@ export const PAGES = {
 };
 
 export class AppComponent extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.title = "Netflix Roulette";
+    }
+
     componentDidMount() {
         this.props.loadMovieList();
     }
@@ -26,7 +31,7 @@ export class AppComponent extends PureComponent {
             <div className="app-layout">
                 <header>
                     <h1>
-                        <Link to={{pathname: "/", state: {page: PAGES.DEFAULT}}}>Netflix Roulette</Link>
+                        <Link to={{pathname: "/", state: {page: PAGES.DEFAULT}}}>{this.title}</Link>
                     </h1>
                     <Switch>
                         <Route exact path="/"
@@ -89,10 +94,5 @@ function mapDispatch(dispatch) {
         }
     };
 }
-
-connect(function (state) {
-    console.log(state, "bla");
-    return state;
-});
 
 export default withRouter(connect(mapState, mapDispatch)(AppComponent));

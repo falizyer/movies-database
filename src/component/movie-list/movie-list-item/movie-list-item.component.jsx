@@ -1,11 +1,10 @@
-import React, {PureComponent} from "react";
-import {Link} from "react-router-dom";
+import React from "react";
+import HandledComponent from "core/handled.component";
 
+import {Link} from "react-router-dom";
 import "./movie-list-item.style";
-import {MovieDatabaseRepository} from "repository/movie-database.repository";
-import {AppActions} from "../../../react-redux/app.actions";
-import {AppStore} from "../../../react-redux/app.store";
-import {PAGES} from "../../../app.component";
+import {PAGES} from "app.component";
+
 
 export function isPageChanged(data) {
     // const {pathname, params} = data;
@@ -18,7 +17,7 @@ export function isPageChanged(data) {
     // });
 }
 
-class MovieListItemComponent extends PureComponent {
+class MovieListItemComponent extends HandledComponent {
     constructor(props) {
         super(props);
     }

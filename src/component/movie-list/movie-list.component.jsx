@@ -1,9 +1,11 @@
-import React, {PureComponent} from "react";
+import React from "react";
+import HandledComponent from "core/handled.component";
+
 import MovieListItem from "./movie-list-item/movie-list-item.component";
 
 import "./movie-list.style";
 
-class MovieListComponent extends PureComponent {
+class MovieListComponent extends HandledComponent {
     constructor(props) {
         super(props);
     }
