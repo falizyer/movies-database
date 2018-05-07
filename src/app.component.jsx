@@ -7,8 +7,7 @@ import MovieSearchComponent from "component/movie-search/movie-search.component"
 
 import "app.style";
 import {connect} from "react-redux";
-import {MovieDatabaseRepository} from "./repository/movie-database.repository";
-import {AppActions} from "./react-redux/app.actions";
+import {loadMovieList, loadMovieInfo} from "./react-redux/app.actions";
 
 export const PAGES = {
     DEFAULT: 0,
@@ -67,30 +66,9 @@ function mapState(state, props) {
 
 function mapDispatch(dispatch) {
     return {
-        async loadMovieList() {
-            dispatch({
-                type: AppActions.MOVIE_LIST.IS_LOADING
-            });
-            const {data, total} = await MovieDatabaseRepository.getMovies();
-            dispatch({
-                type: AppActions.MOVIE_LIST.IS_LOADED,
-                payload: {
-                    movieList: data,
-                    movieTotal: total
-                }
-            });
-        },
-        async loadMovieInfo(id) {
-            if (this.movieInfo.id != id) {
-                dispatch({
-                    type: AppActions.MOVIE_INFO.IS_LOADING
-                });
-                const payload = await MovieDatabaseRepository.getMovie({id});
-                dispatch({
-                    type: AppActions.MOVIE_INFO.IS_LOADED,
-                    payload
-                });
-            }
+        loadMovieList: () => dispatch(loadMovieList()),
+        loadMovieInfo(id) {
+            dispatch(loadMovieInfo(this.movieInfo, id))
         }
     };
 }
