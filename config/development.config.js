@@ -33,5 +33,9 @@ module.exports = {
         rules: [
             ...config.rules
         ]
+    },
+    devServer: {
+        port: 8080,
+        contentBase: "./"
     }
 };
