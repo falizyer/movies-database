@@ -8,10 +8,6 @@ class MovieInfoComponent extends HandledComponent {
         super(props);
     }
 
-    componentDidMount() {
-
-    }
-
     render() {
         const {movieInfo: {title, poster_path, overview} = {}} = this.props;
         return (

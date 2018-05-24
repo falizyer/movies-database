@@ -5,18 +5,6 @@ import {Link} from "react-router-dom";
 import "./movie-list-item.style";
 import {PAGES} from "app.component";
 
-
-export function isPageChanged(data) {
-    // const {pathname, params} = data;
-    // AppStore.dispatch({
-    //     type: AppActions.APPLICATION.IS_PAGE_CHANGED,
-    //     payload: {
-    //         pathname,
-    //         params
-    //     }
-    // });
-}
-
 class MovieListItemComponent extends HandledComponent {
     constructor(props) {
         super(props);

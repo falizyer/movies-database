@@ -65,4 +65,4 @@ class MovieDatabaseRepositoryClass extends Repository {
     }
 }
 
-export const MovieDatabaseRepository = new MovieDatabaseRepositoryClass("http://react-cdp-api.herokuapp.com");
+export const MovieDatabaseRepository = new MovieDatabaseRepositoryClass("http://react-cdp-api.herokuapp.com", {});
