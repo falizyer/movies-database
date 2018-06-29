@@ -30,7 +30,7 @@ class MovieDatabaseRepositoryClass extends Repository {
      * limit: number
      * }
      */
-    async getMovies() {
+    async getMovies({searchBy}) {
         const properties = {
             method: RequestMethod.GET,
             headers: this.getHeaders()

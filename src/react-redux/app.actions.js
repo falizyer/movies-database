@@ -9,7 +9,8 @@ export const AppActions = {
         IS_LOADED: Symbol("MOVIE_LIST.IS_LOADED")
     },
     MOVIE_SEARCH: {
-        BUTTON_PRESSED: Symbol("MOVIE_SEARCH.BUTTON_PRESSED")
+        BUTTON_PRESSED: Symbol("MOVIE_SEARCH.BUTTON_PRESSED"),
+        SEARCH_BY_CHANGED: Symbol("SEARCH_BY_CHANGED")
     },
     MOVIE_INFO: {
         IS_LOADING: Symbol("MOVIE_INFO.IS_LOADING"),
@@ -17,12 +18,12 @@ export const AppActions = {
     }
 };
 
-export function loadMovieList() {
+export function loadMovieList({searchBy}) {
     return async (dispatch) => {
         dispatch({
             type: AppActions.MOVIE_LIST.IS_LOADING
         });
-        const {data, total} = await MovieDatabaseRepository.getMovies();
+        const {data, total} = await MovieDatabaseRepository.getMovies({searchBy});
         dispatch({
             type: AppActions.MOVIE_LIST.IS_LOADED,
             payload: {

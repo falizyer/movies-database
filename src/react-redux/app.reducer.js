@@ -8,7 +8,8 @@ const initState = {
     search_request: "",
     movieList: [],
     movieInfo: {},
-    movieTotal: 0
+    movieTotal: 0,
+    searchBy: "title"
 };
 export function appReducer(state = initState, action) {
     switch (action.type) {
@@ -26,6 +27,10 @@ export function appReducer(state = initState, action) {
         case AppActions.MOVIE_SEARCH.BUTTON_PRESSED:
             return Object.assign({}, state, {
                 search_request: action.payload.search_request
+            });
+        case AppActions.MOVIE_SEARCH.SEARCH_BY_CHANGED:
+            return Object.assign({}, state, {
+                searchBy: action.payload.searchBy
             });
         case AppActions.MOVIE_INFO.IS_LOADED:
             return Object.assign({}, state, {

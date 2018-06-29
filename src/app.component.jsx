@@ -7,7 +7,7 @@ import MovieSearchComponent from "component/movie-search/movie-search.component"
 
 import "app.style";
 import {connect} from "react-redux";
-import {loadMovieList, loadMovieInfo} from "./react-redux/app.actions";
+import {loadMovieList, loadMovieInfo, AppActions} from "./react-redux/app.actions";
 
 export const PAGES = {
     DEFAULT: 0,
@@ -25,7 +25,7 @@ export class AppComponent extends PureComponent {
     }
 
     render() {
-        const {movieList, movieInfo} = this.props;
+        const {movieList, movieInfo, searchBy} = this.props;
         return (
             <div className="app-layout">
                 <header>
@@ -34,7 +34,11 @@ export class AppComponent extends PureComponent {
                     </h1>
                     <Switch>
                         <Route exact path="/"
-                               render={() => <MovieSearchComponent/>}/>
+                               render={() => <MovieSearchComponent
+                                   searchBy={searchBy}
+                                   handleSearchLabelChange={this.props.handleSearchLabelChange}
+                                   handleChange={this.props.handleChange}
+                                   handleSubmit={this.props.handleSubmit}/>}/>
                         <Route path="/movie/:id"
                                render={({match: {params}}) => {
                                    this.props.loadMovieInfo(params.id);
@@ -60,7 +64,8 @@ function mapState(state, props) {
     return {
         page: state.page,
         movieList: state.movieList,
-        movieInfo: state.movieInfo
+        movieInfo: state.movieInfo,
+        searchBy: state.searchBy
     };
 }
 
@@ -69,6 +74,39 @@ function mapDispatch(dispatch) {
         loadMovieList: () => dispatch(loadMovieList()),
         loadMovieInfo(id) {
             dispatch(loadMovieInfo(this.movieInfo, id))
+        },
+        handleSubmit(event) {
+            dispatch({
+                type: AppActions.MOVIE_SEARCH.BUTTON_PRESSED,
+                payload: {
+                    search_request: this.search_request,
+                    searchBy: this.searchBy
+                }
+            });
+            this.loadMovieList({
+                search_request: this.search_request,
+                searchBy: this.searchBy
+            }).then(movieList => {
+
+            });
+            event.preventDefault();
+        },
+        handleChange(event) {
+            dispatch({
+                type: AppActions.MOVIE_SEARCH.BUTTON_PRESSED,
+                payload: {
+                    search_input: event.target.value
+                }
+            });
+            event.preventDefault();
+        },
+        handleSearchLabelChange(event) {
+            dispatch({
+                type: AppActions.MOVIE_SEARCH.SEARCH_BY_CHANGED,
+                payload: {
+                    searchBy: event.target.name
+                }
+            });
         }
     };
 }
